@@ -1,0 +1,32 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:c="http://java.sun.com/jsp/jstl/core_2_0"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+<link rel="stylesheet" type="text/css" href="static/css/Agrocol.css" media="screen"/>
+</h:head>
+<body>
+	<div class="centrarLogin">
+	<p:growl id="messages" />
+		<h:form style="text-align: center;">
+			<p:panel header="Autenticación"  columns="2">
+				<h:panelGrid columns="2" cellpadding="12">
+					
+					<h:outputLabel for="nombreUsuario" value="Usuario:" />
+					<p:inputText value="#{usuario.usuarioAutenticado.nombreUsuario}" id="nombreUsuario" label="nombreUsuario" />
+					
+					<h:outputLabel for="Contraseña" value="Contraseña:" />
+					<p:password value="#{usuario.usuarioAutenticado.clave}" id="clave" />
+					
+					<f:facet name="footer">
+						<p:commandButton id="loginButton" value="Iniciar Sesión" actionListener="#{usuario.autenticarUsuario}" update=":messages" />
+					</f:facet>
+				</h:panelGrid>
+			</p:panel>
+		</h:form>
+	</div>
+</body>
+</html>

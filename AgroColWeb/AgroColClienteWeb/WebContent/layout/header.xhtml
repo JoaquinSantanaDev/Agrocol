@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+	
+	<div style="background-color: #809fff; padding: 12px">
+		<span style="color: white; font-size: 180%; font-family: Arial; margin: 20px">AGROCOL - IAGRO</span>
+	</div>
+	<h:form>
+		<p:growl id="messages" />
+		<p:menubar>
+			<p:submenu label="Gestion de Usuarios" icon="ui-icon-document">
+				<p:menuitem value="Listado Usuarios" outcome="/usuario/listadoUsuario.xhtml">
+					<f:param name="modalidad" value="view" />
+				</p:menuitem>
+				
+				<p:menuitem value="Alta Usuario" outcome="/usuario/formUsuario.xhtml">
+					<f:param name="modalidad" value="insert" />
+					<f:param name="usuarioInvalido" value="false" />
+				</p:menuitem>
+			</p:submenu>
+
+			<f:facet name="options">	
+				<p:commandButton type="submit" value="Cerrar Session" icon="pi pi-home"  action="#{usuario.logOut}"/>
+			</f:facet>
+		</p:menubar>
+	</h:form>
+</ui:composition>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.2"
+	xmlns="http://xmlns.jcp.org/xml/ns/persistence"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_2.xsd">
+	<persistence-unit name="AgroColServidor">
+		<provider>org.hibernate.ejb.HibernatePersistence</provider>
+		<jta-data-source>java:/AGROCOL</jta-data-source>
+		<class>com.Modelo.Formulario</class>
+		<class>com.Modelo.Casilla</class>
+		<class>com.Modelo.Departamento</class>
+		<class>com.Modelo.Equipamiento</class>
+		<class>com.Modelo.EstacionMuestreo</class>
+		<class>com.Modelo.Funcionalidad</class>
+		<class>com.Modelo.Localidad</class>
+		<class>com.Modelo.MetodoMuestreo</class>
+		<class>com.Modelo.Rol</class>
+		<class>com.Modelo.TipoInput</class>
+		<class>com.Modelo.TipoMuestreo</class>
+		<class>com.Modelo.UnidadesMedida</class>
+		<class>com.Modelo.Usuario</class>
+		<class>com.Modelo.Zona</class>
+		<class>com.Modelo.FormularioDinamico</class>
+		<class>com.Modelo.PlantillaCasilla</class>
+		<class>com.Modelo.PlantillaFormulario</class>
+		<properties>
+			<property name="hibernate.dialect" value="org.hibernate.dialect.Oracle10gDialect"/>
+			<property name="hibernate.hbm2ddl.auto" value="validate"/>
+			<property name="hibernate.show_sql" value="true"/>
+		</properties>
+	</persistence-unit>
+</persistence>

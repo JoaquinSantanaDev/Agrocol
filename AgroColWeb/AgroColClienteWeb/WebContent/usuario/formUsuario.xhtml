@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition template="/layout/layout.xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:p="http://primefaces.org/ui">
+
+
+	<ui:define name="title">
+		<c:set var="title" value="Gestión de Usuario" scope="request" />
+	</ui:define>
+
+	<ui:define name="content">
+		<f:metadata>
+			<f:viewParam name="id" value="#{usuario.id}" />
+			<f:viewParam name="modalidad" value="#{usuario.modalidad}" />
+			<f:viewParam name="modalidad" value="#{usuario.usuarioInvalido}" />
+			<f:event type="preRenderView"
+				listener="#{usuario.preRenderViewListener}" />
+		</f:metadata>
+
+		<h:form id="idDatosUsuario" >
+			<ui:define name="title">
+				<c:set var="title" value="Gestión de Usuario" scope="request" />
+			</ui:define>
+
+			<h:panelGrid columns="3" style="display:block">
+				<h:outputLabel value="Id" />
+				<h:inputText id="id" disabled="true"
+					value="#{usuario.usuarioSeleccionado.idUsuario}" />
+				<br />
+
+				<h:outputLabel value="Nombre" />
+				<h:inputText id="nombre"
+					value="#{usuario.usuarioSeleccionado.nombre}" />
+				<h:messages for="nombre" style="color:red"/>
+				
+
+				<h:outputLabel value="Apellido" />
+				<h:inputText id="Apellido" value="#{usuario.usuarioSeleccionado.apellido}" />
+				<h:messages for="Apellido" style= "color:red"/>
+				
+
+
+				<h:outputLabel value="Nombre Usuario" />
+				<h:inputText id="NombreUsuario" 
+					value="#{usuario.usuarioSeleccionado.nombreUsuario}" />
+				<h:messages for="NombreUsuario" style= "color:red"/>
+				
+
+				<h:outputLabel value="Clave" />
+				<h:inputSecret id="Clave"
+					value="#{usuario.usuarioSeleccionado.clave}">
+					<f:validateLength for="Clave"></f:validateLength>
+				</h:inputSecret>
+				<h:messages for="Clave" style= "color:red"/>
+				
+				
+
+				<h:outputLabel value="Direccion" />
+				<h:inputText id="Direccion"
+					value="#{usuario.usuarioSeleccionado.direccion}" />
+				<h:messages for="Direccion" style= "color:red"/>
+				
+
+				<h:outputLabel value="Instituto" />
+				<h:inputText id="Instituto"
+					value="#{usuario.usuarioSeleccionado.instituto}" />
+					<h:messages for="Instituto" style= "color:red"/>
+			    
+           
+
+				<h:outputLabel value="Mail" />
+				<h:inputText id="Mail" value="#{usuario.usuarioSeleccionado.mail}">
+					<f:validateRegex pattern="([^.@]+)(\.[^.@]+)*@([^.@]+\.)+([^.@]+)" />
+				</h:inputText>
+				<h:messages for="Mail" style= "color:red"/>
+				
+
+
+				<h:outputLabel value="Profesion" />
+				<h:inputText id="profesion"
+					value="#{usuario.usuarioSeleccionado.profesion}" />
+				<h:messages for="profesion" style= "color:red"/>
+			
+				<h:outputLabel value="Tipo de Documento" />
+				<h:selectOneMenu id="tipoDocumento"
+					value="#{usuario.usuarioSeleccionado.tipoDoc}">
+					<f:selectItems value="#{usuario.listDocumentos}" />
+				</h:selectOneMenu>
+				<br />
+				
+				<h:outputLabel value="Documento" />
+				<h:inputText id="Documento" 
+					value="#{usuario.usuarioSeleccionado.documento}">
+					<f:validateLength for="Documento"></f:validateLength>
+				</h:inputText>
+				<h:messages for="Documento" style= "color:red"/>
+
+				<h:outputLabel value="Rol" />
+				<h:selectOneMenu id="rol" value="#{usuario.usuarioSeleccionado.rol.idRol}">
+					<f:selectItems 	value="#{usuario.listadoRoles}"	var="rol" itemLabel="#{rol.descripcion}" itemValue="#{rol.idRol}"/>
+				</h:selectOneMenu>
+				
+			</h:panelGrid>
+			<br/>
+			<h:commandButton value="Guardar" update=":form"
+					action="#{usuario.guardarUsuario}" >
+					<f:param name="id" value="${usuario.id}" />
+				</h:commandButton>
+		</h:form>
+	</ui:define>
+</ui:composition>
+
+
+
+
+
