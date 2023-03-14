@@ -1,0 +1,81 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:c="http://java.sun.com/jsp/jstl/core_2_0"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+</h:head>
+<body>
+<h:form>
+			<h:link value="Nuevo usuario" outcome="/usuario/formUsuario.xhtml">
+				<f:param name="modalidad" value="insert" />
+			</h:link>	
+		</h:form>
+		<h3>
+			<h:outputLabel value="Listado de Medicamentos" />
+		</h3>
+		<p:dataTable value="#{medicamento.getListadoUsuarios}" var="user"
+			styleClass="employeeTable" headerClass="employeeTableHeader">
+
+			<p:column sortBy="#{user.idMedicamento}">
+				<f:facet name="header">Id Medicamento</f:facet>    				
+      				#{user.idMedicamento}
+   			</p:column>
+
+
+			<p:column sortBy="#{user.costo}">
+				<f:facet name="header">Costo</f:facet>    				
+      		#{user.costo}
+   		</p:column>
+
+			<p:column sortBy="#{user.dosis}">
+				<f:facet name="header">Dosis</f:facet>
+		      #{user.dosis}
+		</p:column>
+
+			<p:column sortBy="#{user.marca}">
+				<f:facet name="header">Marca</f:facet>
+      		#{user.marca}
+   		</p:column>
+
+			<p:column sortBy="#{user.nro_medicamento}">
+				<f:facet name="header">Nro_Medicamento</f:facet>
+      		#{user.nro_medicamento}
+		</p:column>
+		
+		<p:column sortBy="#{user.producto}">
+				<f:facet name="header">Producto</f:facet>
+      		#{user.producto}
+		</p:column>
+		
+		<p:column sortBy="#{user.tipo}">
+				<f:facet name="header">Tipo</f:facet>
+      		#{user.tipo}
+		</p:column>
+		
+			<p:column sortBy="#{user.idMedicamento}">
+			
+				<f:facet name="header">Acciones</f:facet>			
+					
+				<p:commandLink action="#{usuario.eliminarUsuario}">
+					<f:param name="id" value="${user.idMedicamento}" />			
+					<h:outputText value="Eliminar  " />
+				</p:commandLink>
+							
+			</p:column>	
+			<p:column sortBy="#{user.idMedicamento}">
+			
+				<f:facet name="header">Acciones</f:facet>			
+		
+				<p:commandLink action="#{usuario.modificarMedicamento}">
+					<h:outputText value="Modificar" />
+					<f:param name="id" value="${user.idMedicamento}" />	
+					<f:param name="modalidad" value="update" />
+				</p:commandLink>
+
+			</p:column>
+		</p:dataTable>
+</body>
+</html>
